@@ -44,16 +44,31 @@ print("Integer: {$pearl->getData("integer")}<br>");
 print("Image: <img src=\"data:image/png;base64," . base64_encode($pearl->getData("image")) . "\" \>");
 ```
 
+### Misc
+
+Scavenger introduces some new constants into PHP:
+
+- `PROJECT_ROOT` - Being the root of the project. (Where for example, `config.ini` resides.)
+- `APP_ROOT` - Application root. (The `App` folder.)
+- `SCAVENGER_ROOT` - Represents the root of Scavenger's internals. For internal use only.
+
+Under no circumstances, should `{APP_ROOT}/Public/index.php` be ever edited. Use `{APP_ROOT}/Header.php` for custom
+initialization code. Doing so could lead to merge errors while updating Scavenger.
+
 ## Installation
+
 1. Fork this repository then clone it to a local directory.
 2. Execute `composer i` in the project directory.
 3. Copy the config.ini file and modify the value(s) to your liking.
 4. You've made a Scavenger project!
 
 ### Webserver configuration.
-As Scavenger relies on a router script to function, you need to fall back to the index.php script in an event of the URL not being a valid path on the filesystem. e.g. `/user/1`.
+
+As Scavenger relies on a router script to function, you need to fall back to the index.php script in an event of the URL
+not being a valid path on the filesystem. e.g. `/user/1`.
 
 Example with NGINX:
+
 ```nginx
 try_files $uri $uri/ /index.php;
 ```
