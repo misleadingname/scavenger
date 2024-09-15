@@ -45,7 +45,10 @@ print("Image: <img src=\"data:image/png;base64," . base64_encode($pearl->getData
 ```
 
 ## Installation
-Fork this repository then clone it and you've made a Scavenger project!
+1. Fork this repository then clone it to a local directory.
+2. Execute `composer i` in the project directory.
+3. Copy the config.ini file and modify the value(s) to your liking.
+4. You've made a Scavenger project!
 
 ### Webserver configuration.
 As Scavenger relies on a router script to function, you need to fall back to the index.php script in an event of the URL not being a valid path on the filesystem. e.g. `/user/1`.
