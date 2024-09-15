@@ -1,0 +1,12 @@
+{
+  "require": {
+    "twig/twig": "^3.14",
+    "pecee/simple-router": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Scavenger\\": "Scavenger/",
+      "App\\": "App/"
+    }
+  }
+}
