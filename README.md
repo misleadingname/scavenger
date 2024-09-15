@@ -30,7 +30,7 @@ Some script
 ```php
 $pearl = new Pearl("test", "test");
 $pearl->setData("string", DataType::Text, "a");
-$pearl->setData("Integer", DataType::Integer, 42);
+$pearl->setData("integer", DataType::Integer, 42);
 $pearl->setData("image", DataType::Binary, file_get_contents(APP_ROOT . "/test.png"));
 $pearl->flush();
 ```
@@ -40,7 +40,7 @@ Some other script
 ```php
 $pearl = new Pearl("test", "test");
 print("String: {$pearl->getData("string")}<br>");
-print("Integer: {$pearl->getData("number")}<br>");
+print("Integer: {$pearl->getData("integer")}<br>");
 print("Image: <img src=\"data:image/png;base64," . base64_encode($pearl->getData("image")) . "\" \>");
 ```
 
