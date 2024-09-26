@@ -1,9 +1,9 @@
 <p align="center">
     <img src=".github/logo.png" alt="Scavenger"><br>
-  "The no nonsense barebones pure PHP framework."
+  "The no nonsense tiny pure PHP framework."
 </p>
 
-A simple PHP barebones backend framework for smaller scale projects that don't need anything extensive or complicated
+A simple tiny PHP backend framework for smaller scale projects that don't need anything extensive or complicated
 such
 as [Laravel](https://github.com/laravel/laravel). You provide the clientside environment yourself.
 
