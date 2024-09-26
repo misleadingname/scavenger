@@ -94,5 +94,5 @@ Hopefully you'll find Scavenger useful for one of your projects.
 > _Sigh_, of course when I'm slightly invested into the project I find out that someone
 > already [beat me to it.](https://codeigniter.com/) _(It seems like a really cool project... Go star it I guess!)_ But that won't stop me! _(Who knows, maybe Scavenger be even smaller!)_
 
-_Rain World is a registered trademark of Videocult, LLC, all rights belong to them._  
+_Rain World is a registered trademark of Videocult, LLC, all rights Rain World related mentions (The Scavenger image in the logo) belong to them._  
 _Lizard hiss~_ Oh, sorry. _Meow..._
