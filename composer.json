@@ -1,7 +1,8 @@
 {
   "require": {
     "twig/twig": "^3.14",
-    "pecee/simple-router": "^5.4"
+    "pecee/simple-router": "^5.4",
+    "ext-pdo": "*"
   },
   "autoload": {
     "psr-4": {

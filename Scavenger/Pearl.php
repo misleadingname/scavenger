@@ -29,7 +29,7 @@ class Pearl
 
 	private function resolveFilePath(string $name, ?string $category): string
 	{
-		$folder = SCAVENGER_CONFIG["Location"];
+		$folder = SCAVENGER_CONFIG["Pearls"]["Location"];
 
 		$baseDir = PROJECT_ROOT . "/$folder/$category/";
 		return $baseDir . $name . '.prl';

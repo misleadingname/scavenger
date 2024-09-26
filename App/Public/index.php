@@ -9,9 +9,17 @@
 
 namespace App;
 
+use Exception;
 use Pecee\SimpleRouter\SimpleRouter;
 
-define("PROJECT_ROOT", realpath(__DIR__ . "../../../"));
+define("PROJECT_ROOT", realpath(__DIR__ . "/../../"));
+
+if (PROJECT_ROOT == null) {
+	$error = "Failed to bootstrap project! \"PROJECT_ROOT\" is NULL!";
+
+	die("Scavenger error: $error");
+}
+
 
 define("APP_ROOT", realpath(PROJECT_ROOT . "/App"));
 define("SCAVENGER_ROOT", realpath(PROJECT_ROOT . "/Scavenger"));
@@ -25,4 +33,9 @@ require_once(APP_ROOT . "/Header.php");
 require_once(APP_ROOT . "/Router.php");
 
 SimpleRouter::setDefaultNamespace("App\Controllers");
-SimpleRouter::start();
+
+try {
+	SimpleRouter::start();
+} catch (Exception $e) {
+	print_r($e->getMessage());
+}

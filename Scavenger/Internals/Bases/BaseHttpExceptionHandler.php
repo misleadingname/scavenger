@@ -11,6 +11,5 @@ class BaseHttpExceptionHandler implements IExceptionHandler
 {
 	#[NoReturn] public function handleError(Request $request, Exception $error): void
 	{
-
 	}
 }
