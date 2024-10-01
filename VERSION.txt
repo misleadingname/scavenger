@@ -1,0 +1,9 @@
+0.0.0-master
+
+Do not modify this file, this is the current Scavenger version, used by maintenance scripts.
+
+Version tags:
+	Master - Up to date with upstream, very unstable and barely tested.
+	Canary - Semi up to date with upstream, still unstable but at least somewhat tested.
+	Beta - Beta release cycle, think of it like a more stable Canary.
+	Stable - Stable release cycle, most stable and thoroughly tested.
