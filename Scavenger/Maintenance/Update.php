@@ -91,7 +91,21 @@ if($zipObj->open($zipLoc) != "true"){
 }
 
 $newFolderName = basename(PROJECT_ROOT);
-$zipObj->renameIndex(0, $newFolderName);
+for ($i = 0; $i < $zipObj->numFiles; $i++) {
+	$fileInfo = $zipObj->statIndex($i);
+	$oldName = $fileInfo['name'];
+
+	if (str_contains($oldName, '/')) {
+		$pathParts = explode('/', $oldName);
+		$pathParts[0] = $newFolderName;
+		$newName = implode('/', $pathParts);
+
+		if (!$zipObj->renameIndex($i, $newName)) {
+			fLog("Error renaming file inside zip: $oldName", LogSeverity::Error);
+			die();
+		}
+	}
+}
 
 fLog($newFolderName);
 
@@ -100,4 +114,4 @@ $zipObj->close();
 
 fLog("Updated.");
 
-//KUTAS
+//KUTAS fewfewqfewfewqf
