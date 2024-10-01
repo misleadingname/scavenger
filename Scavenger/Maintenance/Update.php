@@ -58,12 +58,15 @@ if($latestVersion["prerelease"] == 1) {
 	fLog("This version is marked as prerelease, proceed with caution.", LogSeverity::Warn);
 }
 
-fLog("Downloading {$latestVersion["name"]}...");
+$dlLink = "https://github.com/misleadingname/scavenger/archive/refs/tags/{$latestVersion["tag_name"]}.zip";
+
+fLog("Downloading {$latestVersion["name"]}... ($dlLink)");
 
 $zipLoc = tempnam(sys_get_temp_dir(), "scavengerdownload");
+$zipHandle = fopen($zipLoc, "w");
 
 $ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $latestVersion["tarball_url"]);
+curl_setopt($ch, CURLOPT_URL, $dlLink);
 curl_setopt($ch, CURLOPT_FAILONERROR, true);
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -71,10 +74,11 @@ curl_setopt($ch, CURLOPT_AUTOREFERER, true);
 curl_setopt($ch, CURLOPT_TIMEOUT, 10);
 curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-curl_setopt($ch, CURLOPT_FILE, $zipLoc);
+curl_setopt($ch, CURLOPT_FILE, $zipHandle);
 $page = curl_exec($ch);
 if(!$page) {
 	fLog("Error downloading file: " . curl_error($ch), LogSeverity::Error);
+	die();
 }
 
 curl_close($ch);
@@ -82,10 +86,16 @@ curl_close($ch);
 $zipObj = new ZipArchive();
 
 if($zipObj->open($zipLoc) != "true"){
-	fLog("Error extracting tarball.", LogSeverity::Error);
+	fLog("Error extracting zip.", LogSeverity::Error);
+	die();
 }
 
-$zipObj->extractTo(PROJECT_ROOT);
+$newFolderName = basename(PROJECT_ROOT);
+$zipObj->renameIndex(1, $newFolderName);
+
+fLog($newFolderName);
+
+$zipObj->extractTo(PROJECT_ROOT . "/../");
 $zipObj->close();
 
 fLog("Updated.");

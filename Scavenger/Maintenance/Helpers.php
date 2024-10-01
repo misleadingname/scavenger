@@ -1,6 +1,6 @@
 <?php
 
-
+define("PROJECT_ROOT", realpath(__DIR__ . "/../../"));
 
 enum LogSeverity: int {
 	case Info = 0;
