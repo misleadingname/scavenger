@@ -73,5 +73,5 @@ function httpGet(string $url): array {
 		"User-Agent: ScavengerMaintenanceScript",
 	]);
 
-	return json_decode(curl_exec($curl));
+	return json_decode(curl_exec($curl), true);
 }
