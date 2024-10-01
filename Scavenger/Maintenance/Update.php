@@ -91,7 +91,7 @@ if($zipObj->open($zipLoc) != "true"){
 }
 
 $newFolderName = basename(PROJECT_ROOT);
-$zipObj->renameIndex(1, $newFolderName);
+$zipObj->renameIndex(0, $newFolderName);
 
 fLog($newFolderName);
 
@@ -99,3 +99,5 @@ $zipObj->extractTo(PROJECT_ROOT . "/../");
 $zipObj->close();
 
 fLog("Updated.");
+
+//KUTAS
