@@ -86,7 +86,7 @@ curl_close($ch);
 $zipObj = new ZipArchive();
 
 if($zipObj->open($zipLoc) != "true"){
-	fLog("Error extracting zip.", LogSeverity::Error);
+	fLog("Error preparing zip.", LogSeverity::Error);
 	die();
 }
 
@@ -100,14 +100,21 @@ for ($i = 0; $i < $zipObj->numFiles; $i++) {
 		$pathParts[0] = $newFolderName;
 		$newName = implode('/', $pathParts);
 
-		if (!$zipObj->renameIndex($i, $newName)) {
+		fLog("$oldName -> $newName");
+
+		if (!$zipObj->renameName($oldName, $newName)) {
 			fLog("Error renaming file inside zip: $oldName", LogSeverity::Error);
 			die();
 		}
 	}
 }
 
-fLog($newFolderName);
+$zipObj->close();
+
+if($zipObj->open($zipLoc) != "true"){
+	fLog("Error trying to extract zip.", LogSeverity::Error);
+	die();
+}
 
 $zipObj->extractTo(PROJECT_ROOT . "/../");
 $zipObj->close();
