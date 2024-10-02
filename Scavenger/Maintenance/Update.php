@@ -8,13 +8,23 @@ displayIntro();
 
 fLog("Checking for updates...");
 
+$semverPattern = '/^\d+\.\d+\.\d+-(master|canary|beta|stable)$/';
+
 if (!file_exists(PROJECT_ROOT . "/VERSION.txt")) {
 	fLog("Version not found, getting latest stable!!!");
 	$fullVersion = "0.0.0-stable";
 } else {
-	$fullVersion = $line = fgets(fopen(PROJECT_ROOT . "/VERSION.txt", 'r'));
-}
+	$handle = fopen(PROJECT_ROOT . "/VERSION.txt", 'r');
+	$line = trim(fgets($handle));
+	fclose($handle);
 
+	if (preg_match($semverPattern, $line)) {
+		$fullVersion = $line;
+	} else {
+		fLog("Invalid version format ($line), getting latest stable!!!");
+		$fullVersion = "0.0.0-stable";
+	}
+}
 
 $label = trim(explode("-", $fullVersion)[1]);
 $dlLink = "";
@@ -32,7 +42,7 @@ if ($label == "master") {
 		global $releases;
 
 		$tags = [];
-		if(count($releases) == 0) {
+		if (count($releases) == 0) {
 			fLog("No stable release yet, check back later...", LogSeverity::Error);
 			die();
 		}
