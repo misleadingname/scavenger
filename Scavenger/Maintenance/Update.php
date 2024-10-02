@@ -120,5 +120,3 @@ $zipObj->extractTo(PROJECT_ROOT . "/../");
 $zipObj->close();
 
 fLog("Updated.");
-
-//KUTAS fewfewqfewfewqf
