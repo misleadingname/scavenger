@@ -57,20 +57,20 @@ function fLog(string $message = null, LogSeverity $severity = LogSeverity::Info,
 }
 
 function httpGet(string $url): array {
-	$curl = curl_init();
-	curl_setopt($curl, CURLOPT_URL, $url);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($curl, CURLOPT_HEADER, 0);
-	curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-	curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-	curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 0);
+	$curl = curl_init($url);
 
+	curl_setopt_array($curl, [
+		CURLOPT_FAILONERROR => true,
+		CURLOPT_SSL_VERIFYPEER => false,
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_FOLLOWLOCATION => true,
 
-	curl_setopt($curl, CURLOPT_HTTPHEADER, [
-		"Method: GET",
-		"X-GitHub-Api-Version: 2022-11-28",
-		"Accept: application/vnd.github+json",
-		"User-Agent: ScavengerMaintenanceScript",
+		CURLOPT_HTTPHEADER => [
+			"Method: GET",
+			"X-GitHub-Api-Version: 2022-11-28",
+			"Accept: application/vnd.github+json",
+			"User-Agent: ScavengerMaintenanceScript",
+		]
 	]);
 
 	return json_decode(curl_exec($curl), true);
