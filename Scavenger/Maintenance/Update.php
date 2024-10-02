@@ -32,6 +32,11 @@ if ($label == "master") {
 		global $releases;
 
 		$tags = [];
+		if(count($releases) == 0) {
+			fLog("No stable release yet, check back later...", LogSeverity::Error);
+			die();
+		}
+
 		if (count($releases) <= 1) {
 			$version = $releases[0];
 
