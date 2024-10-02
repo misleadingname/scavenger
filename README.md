@@ -62,15 +62,24 @@ Scavenger introduces some new constants into PHP:
 
 > [!IMPORTANT]
 > Under no circumstances, should `{APP_ROOT}/Public/index.php` be ever edited. Use `{APP_ROOT}/Header.php` for custom
-> initialization code. Doing so could lead to merge errors while updating Scavenger.
+> initialization code. Doing so could lead to merge errors while updating Scavenger. And your changes **will** be lost
+> when using the maintenance script to update.
 
 ## Installation
+There are a couple of methods to install Scavenger into your project;
 
+#### Following Master (Recommended for now)
 1. Fork this repository then clone it to a local directory.
 2. Execute `composer i` in the project directory.
 3. Copy the config.ini file and modify the value(s) to your liking.
 4. You've made a Scavenger project!
 5. _Optionally;_ Delete the `.github` directory and add it to your `.gitignore`.
+
+#### Following Stable
+1. Use the **Download ZIP** button on the GitHub page.
+2. Extract it somewhere and execute `composer i` in the project directory.
+3. Copy the config.ini file and modify the value(s) to your liking.
+4. You've made a Scavenger project!
 
 ### Webserver configuration.
 
@@ -90,9 +99,15 @@ my projects, I don't need database ORMs or other fancy-schmaltzy things.
 
 Hopefully you'll find Scavenger useful for one of your projects.
 
-> [!NOTE]
-> _Sigh_, of course when I'm slightly invested into the project I find out that someone
-> already [beat me to it.](https://codeigniter.com/) _(It seems like a really cool project... Go star it I guess!)_ But that won't stop me! _(Who knows, maybe Scavenger be even smaller!)_
+...
 
-_Rain World is a registered trademark of Videocult, LLC, all Rain World related mentions (The Scavenger image in the logo), rights belong to them._  
+[//]: # (> [!NOTE])
+_Sigh_, of course when I'm slightly invested into the project I find out that someone
+already [beat me to it.](https://codeigniter.com/) _(It seems like a really cool project... Go star it I guess!)_ But
+that won't stop me! _(Who knows, maybe Scavenger be even smaller!)_
+
+---
+
+_Rain World is a registered trademark of Videocult, LLC, all Rain World related mentions (The Scavenger image in the
+logo), rights belong to them._  
 _Lizard hiss~_ Oh, sorry. _Meow..._
