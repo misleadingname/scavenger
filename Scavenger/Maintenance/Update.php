@@ -100,6 +100,15 @@ for ($i = 0; $i < $zipObj->numFiles; $i++) {
 		$pathParts[0] = $newFolderName;
 		$newName = implode('/', $pathParts);
 
+		if(str_starts_with($newName, basename(PROJECT_ROOT) . "/App") && $newName !== basename(PROJECT_ROOT) . "/App/Public/index.php") {
+			fLog("Discarding! $newName");
+			if(!$zipObj->deleteName($oldName)) {
+				fLog("Error deleting file inside of zip: $oldName", LogSeverity::Error);
+				die();
+			}
+			continue;
+		}
+
 		fLog("$oldName -> $newName");
 
 		if (!$zipObj->renameName($oldName, $newName)) {
