@@ -1,4 +1,4 @@
-0.0.0-master
+0.0.2-master
 
 Do not modify this file, this is the current Scavenger version, used by maintenance scripts.
 
