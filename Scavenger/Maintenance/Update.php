@@ -10,9 +10,21 @@ fLog("Checking for updates...");
 $semverPattern = '/^\d+\.\d+\.\d+-(master|canary|beta|stable)$/';
 $versionFile = PROJECT_ROOT . "/VERSION.txt";
 
-$fullVersion = (file_exists($versionFile))
-	? trim(file_get_contents($versionFile))
-	: "0.0.0-stable";
+if (!file_exists(PROJECT_ROOT . "/VERSION.txt")) {
+	fLog("Version not found, getting latest stable!!!");
+	$fullVersion = "0.0.0-stable";
+} else {
+	$handle = fopen(PROJECT_ROOT . "/VERSION.txt", 'r');
+	$line = trim(fgets($handle));
+	fclose($handle);
+
+	if (preg_match($semverPattern, $line)) {
+		$fullVersion = $line;
+	} else {
+		fLog("Invalid version format ($line), getting latest stable!!!");
+		$fullVersion = "0.0.0-stable";
+	}
+}
 
 if (!preg_match($semverPattern, $fullVersion)) {
 	fLog("Invalid version format ($fullVersion), getting latest stable!!!");
