@@ -76,7 +76,7 @@ There are a couple of methods to install Scavenger into your project;
 5. _Optionally;_ Delete the `.github` directory and add it to your `.gitignore`.
 
 #### Following Stable
-1. Use the **Download ZIP** button on the GitHub page.
+1. Download one of the **STABLE** releases from the [releases page](https://github.com/misleadingname/scavenger/releases).
 2. Extract it somewhere and execute `composer i` in the project directory.
 3. Copy the config.ini file and modify the value(s) to your liking.
 4. You've made a Scavenger project!
@@ -98,7 +98,7 @@ The reason why I made Scavenger was because I was very displeased after seeing h
 my projects, I don't need database ORMs or other fancy-schmaltzy things.
 
 Hopefully you'll find Scavenger useful for one of your projects.
-
+  
 ...
 
 [//]: # (> [!NOTE])
