@@ -7,31 +7,36 @@ global $httpContext;
 displayIntro();
 fLog("Checking for updates...");
 
-$semverPattern = '/^\d+\.\d+\.\d+-(master|canary|beta|stable)$/';
-$versionFile = PROJECT_ROOT . "/VERSION.txt";
-
-if (!file_exists(PROJECT_ROOT . "/VERSION.txt")) {
-	fLog("Version not found, getting latest stable!!!");
-	$fullVersion = "0.0.0-stable";
+if (isset($argv[1])) {
+	$label = $argv[1];
 } else {
-	$handle = fopen(PROJECT_ROOT . "/VERSION.txt", 'r');
-	$line = trim(fgets($handle));
-	fclose($handle);
+	$semverPattern = '/^\d+\.\d+\.\d+-(master|canary|beta|stable)$/';
+	$versionFile = PROJECT_ROOT . "/VERSION.txt";
 
-	if (preg_match($semverPattern, $line)) {
-		$fullVersion = $line;
+	if (!file_exists(PROJECT_ROOT . "/VERSION.txt")) {
+		fLog("Version not found, getting latest stable!!!");
+		$fullVersion = "0.0.0-stable";
 	} else {
-		fLog("Invalid version format ($line), getting latest stable!!!");
+		$handle = fopen(PROJECT_ROOT . "/VERSION.txt", 'r');
+		$line = trim(fgets($handle));
+		fclose($handle);
+
+		if (preg_match($semverPattern, $line)) {
+			$fullVersion = $line;
+		} else {
+			fLog("Invalid version format ($line), getting latest stable!!!");
+			$fullVersion = "0.0.0-stable";
+		}
+	}
+
+	if (!preg_match($semverPattern, $fullVersion)) {
+		fLog("Invalid version format ($fullVersion), getting latest stable!!!");
 		$fullVersion = "0.0.0-stable";
 	}
+
+	$label = trim(explode("-", $fullVersion)[1]);
 }
 
-if (!preg_match($semverPattern, $fullVersion)) {
-	fLog("Invalid version format ($fullVersion), getting latest stable!!!");
-	$fullVersion = "0.0.0-stable";
-}
-
-$label = trim(explode("-", $fullVersion)[1]);
 $dlLink = "";
 
 fLog("Updating channel $label...");
