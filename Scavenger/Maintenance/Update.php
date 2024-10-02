@@ -31,11 +31,11 @@ $dlLink = "";
 
 fLog("Updating channel $label...");
 
-if ($label == "master") {
+if ($label === "master") {
 	fLog("Downloading latest master, proceed with insane caution!!!", LogSeverity::Warn);
 	$dlLink = "https://github.com/misleadingname/scavenger/archive/refs/heads/master.zip";
 	fLog("Downloading latest master... ($dlLink)");
-} else {
+} elseif($label === "stable") {
 	$releases = httpGet("https://api.github.com/repos/misleadingname/scavenger/releases");
 	function findVersion(string $label, bool $ignorePrerelease = false): ?string
 	{
@@ -94,6 +94,9 @@ if ($label == "master") {
 	$dlLink = "https://github.com/misleadingname/scavenger/archive/refs/tags/{$latestVersion["tag_name"]}.zip";
 
 	fLog("Downloading {$latestVersion["name"]}... ($dlLink)");
+} else {
+	fLog("Invalid channel", LogSeverity::Error);
+	die();
 }
 
 $zipLoc = tempnam(sys_get_temp_dir(), "scavengerdownload");
