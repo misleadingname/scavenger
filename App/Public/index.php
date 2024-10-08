@@ -34,8 +34,4 @@ require_once(APP_ROOT . "/Router.php");
 
 SimpleRouter::setDefaultNamespace("App\Controllers");
 
-try {
-	SimpleRouter::start();
-} catch (Exception $e) {
-	print_r($e->getMessage());
-}
+SimpleRouter::start();

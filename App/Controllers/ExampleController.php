@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Override;
 use Scavenger\Internals\Bases\BaseController;
+use function Scavenger\Internals\Scripts\Helpers\render;
 
 class ExampleController extends BaseController
 {

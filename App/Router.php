@@ -2,9 +2,10 @@
 
 namespace App;
 
+use Pecee\Http\Middleware\BaseCsrfVerifier;
+
 use App\Controllers\ExampleController;
 use App\ExceptionHandlers\ExampleHttpExceptionHandler;
-use Pecee\Http\Middleware\BaseCsrfVerifier;
 use Pecee\SimpleRouter\SimpleRouter;
 
 /* Your routes go under here... */

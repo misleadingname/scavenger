@@ -2,7 +2,7 @@
 
 namespace Scavenger\Internals\Scripts;
 
-use Scavenger\Internals\ScavengerException;
+use Scavenger\Internals\Exceptions\ScavengerException;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;

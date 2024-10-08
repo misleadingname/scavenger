@@ -1,6 +1,6 @@
 <?php
 
-namespace Scavenger\Internals\Scripts;
+namespace Scavenger\Internals\Scripts\Helpers;
 
 use InvalidArgumentException;
 use Pecee\Http\Input\InputHandler;
@@ -8,6 +8,10 @@ use Pecee\Http\Request;
 use Pecee\Http\Response;
 use Pecee\Http\Url;
 use Pecee\SimpleRouter\SimpleRouter as Router;
+use Scavenger\Internals\Exceptions\ScavengerException;
+use Twig\Error\LoaderError;
+use Twig\Error\RuntimeError;
+use Twig\Error\SyntaxError;
 
 /**
  * Get url for a route by using either name/alias, class or method name.
