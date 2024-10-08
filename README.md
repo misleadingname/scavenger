@@ -66,20 +66,17 @@ Scavenger introduces some new constants into PHP:
 > when using the maintenance script to update.
 
 ## Installation
+
 There are a couple of methods to install Scavenger into your project;
 
-#### Following Master (Recommended for now)
-1. Fork this repository then clone it to a local directory.
-2. Execute `composer i` in the project directory.
-3. Copy the config.ini file and modify the value(s) to your liking.
-4. You've made a Scavenger project!
-5. _Optionally;_ Delete the `.github` directory and add it to your `.gitignore`.
-
 #### Following Stable
-1. Download one of the **STABLE** releases from the [releases page](https://github.com/misleadingname/scavenger/releases).
+
+1. Download one of the **STABLE** releases from
+   the [releases page](https://github.com/misleadingname/scavenger/releases).
 2. Extract it somewhere and execute `composer i` in the project directory.
 3. Copy the config.ini file and modify the value(s) to your liking.
-4. You've made a Scavenger project!
+4. Run the updater maintenance script in CLI. (`/Scavenger/Maintenance/Update.php`)
+5. You've made a Scavenger project!
 
 ### Webserver configuration.
 
@@ -92,13 +89,24 @@ Example with NGINX:
 try_files $uri $uri/ /index.php;
 ```
 
+## Maintenance scripts
+
+Scavenger contains a `Maintenance` folder within it's internals folder. It contains helper scripts to be ran with the
+CLI. (e.g. `php Update.php`)
+
+### The list of scripts and some documentation
+
+- `Update.php`
+    - Updates the current Scavenger version to the latest version. Optionally a version label can be put to specify the
+      branch that it'll update to.
+
 ## Closing notes
 
 The reason why I made Scavenger was because I was very displeased after seeing how complex Laravel is for the scope of
 my projects, I don't need database ORMs or other fancy-schmaltzy things.
 
 Hopefully you'll find Scavenger useful for one of your projects.
-  
+
 ...
 
 [//]: # (> [!NOTE])

@@ -2,7 +2,8 @@
 
 define("PROJECT_ROOT", realpath(__DIR__ . "/../../"));
 
-enum LogSeverity: int {
+enum LogSeverity: int
+{
 	case Info = 0;
 	case Warn = 1;
 	case Error = 2;
@@ -20,7 +21,8 @@ function displayIntro()
 \n-------------------------Maintenance Scripts----\n");
 }
 
-function getSeverityColor(LogSeverity $severity): string {
+function getSeverityColor(LogSeverity $severity): string
+{
 	return match ($severity) {
 		LogSeverity::Info => "\033[32m",  // Green for Info
 		LogSeverity::Warn => "\033[33m",  // Yellow for Warning
@@ -28,11 +30,13 @@ function getSeverityColor(LogSeverity $severity): string {
 	};
 }
 
-function resetColor(): string {
+function resetColor(): string
+{
 	return "\033[0m"; // Reset to default terminal color
 }
 
-function fLog(string $message = null, LogSeverity $severity = LogSeverity::Info, $newline = true, string $filePath = 'log.log') {
+function fLog(string $message = null, LogSeverity $severity = LogSeverity::Info, $newline = true, string $filePath = 'log.log')
+{
 	$timestamp = date('Y-m-d H:i:s');
 
 	$newlinee = $newline ? "\n" : "";
@@ -40,7 +44,7 @@ function fLog(string $message = null, LogSeverity $severity = LogSeverity::Info,
 
 	$message = str_replace("\r", "", $message);
 
-	$severityLabel = match($severity) {
+	$severityLabel = match ($severity) {
 		LogSeverity::Info => 'INFO',
 		LogSeverity::Warn => 'WARNING',
 		LogSeverity::Error => 'ERROR',
@@ -56,7 +60,8 @@ function fLog(string $message = null, LogSeverity $severity = LogSeverity::Info,
 	file_put_contents($filePath, $plainMessage, FILE_APPEND);
 }
 
-function httpGet(string $url): array {
+function httpGet(string $url): array
+{
 	$curl = curl_init($url);
 
 	curl_setopt_array($curl, [

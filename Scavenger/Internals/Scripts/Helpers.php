@@ -4,10 +4,10 @@ namespace Scavenger\Internals\Scripts;
 
 use InvalidArgumentException;
 use Pecee\Http\Input\InputHandler;
-use Pecee\SimpleRouter\SimpleRouter as Router;
-use Pecee\Http\Url;
-use Pecee\Http\Response;
 use Pecee\Http\Request;
+use Pecee\Http\Response;
+use Pecee\Http\Url;
+use Pecee\SimpleRouter\SimpleRouter as Router;
 
 /**
  * Get url for a route by using either name/alias, class or method name.

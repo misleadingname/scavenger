@@ -4,7 +4,7 @@ namespace Scavenger\Internals\Bases;
 
 class BaseController
 {
-	function index()
+	public static function index()
 	{
 		return "Unimplemented \"index\" method, replace it!";
 	}
